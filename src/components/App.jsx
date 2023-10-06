@@ -62,12 +62,18 @@ export class App extends Component {
           <h1>Phonebook</h1>
           <ContactForm addContact={this.addContact} />
           <h2>Contacts</h2>
-          <Filter filteredContacts={this.handleFilter} />
-          <ContactList
-            contacts={this.state.contacts}
-            filter={this.state.filter}
-            removeContact={this.removeContact}
-          />
+          {this.state.contacts.length !== 0 ? (
+            <>
+              <Filter filteredContacts={this.handleFilter} />
+              <ContactList
+                contacts={this.state.contacts}
+                filter={this.state.filter}
+                removeContact={this.removeContact}
+              />
+            </>
+          ) : (
+            <p>There are no contacts saved yet</p>
+          )}
         </section>
         <Toaster />
       </div>
